@@ -1,2 +1,56 @@
-\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}  
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+% - a4paper: Sets the paper size to A4.
+% - 12pt: Sets the base font size to 12pt.
+% - twoside: Enables double-sided formatting (different margins and headers for odd/even pages).
+% - openright: Forces new chapters to begin on right-hand (odd-numbered) pages.
+% - titlepage: Ensures \maketitle creates a title page.
+
 \usepackage[a4paper,inner=1.5 in,outer=1 in]{geometry}
+% - Sets custom page margins.
+% - inner=1.5in gives more space on the inner side for binding.
+% - outer=1in keeps normal outer margin.
+
+\setlength{\marginparwidth}{1.5in} % - Sets the width of the margin area where marginal notes (\marginpar) appear.
+\setlength{\headheight}{15pt} % - Sets the height of the header. % - Required if you're using 'fancyhdr' to avoid warnings like "Package Fancyhdr Warning: \headheight is too small".
+\setlength{\textheight}{640pt}  % - Sets the height of the main text block (from top of text to bottom before footer). 592pt is the default for A4 paper in LaTeX.
+\setlength{\footskip}{40pt} % - Distance from the bottom of the text area to the bottom of the footer.
+
+\usepackage{setspace} % Provides support for setting the spacing between lines in a document.
+
+\usepackage{fancyhdr}
+% - Provides extensive control over headers and footers.
+% - Used to customize layout for page numbers, chapter/section titles, etc.
+
+% -------------------------------
+% Fancy header/footer setup
+% -------------------------------
+
+\pagestyle{fancy}        % Activates fancyhdr custom page style.
+\fancyfoot[C]{\thepage}  % - Sets the page number in the center of the footer. Other options: L (left), R (right).
+\fancyhead[LE,RO]{\bfseries} % - Empty bold headers on Left side (Even pages) and Right side (Odd pages).
+\fancyhead[RE]{\sl\nouppercase\leftmark} % - Displays current chapter title on Even pages (Right header).\sl gives slanted font, \nouppercase keeps original case.
+\fancyhead[LO]{\sl\nouppercase\rightmark} % - Displays current section title on Odd pages (Left header).
+\renewcommand{\headrulewidth}{0.3pt} % - Sets the thickness of the horizontal line under the header.
+
+% -------------------------------
+% Redefine \cleardoublepage
+% -------------------------------
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else%
+	\hbox{}%
+	\thispagestyle{empty}%                     % Do nothing if on an odd (right) page
+	\newpage%
+	\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+%\parskip 7.5pt
+\makeatother
+% - Redefines \cleardoublepage to insert a truly blank even page
+%   (with no header/footer) if needed in twoside mode.
+% - Ensures chapters always start on right-hand (odd) pages.
+
+\clearpage{\pagestyle{plain}\cleardoublepage}
+% - Makes sure any leftover text finishes before moving to a new chapter page.
+% - Sets the next page temporarily to 'plain' (used in some templates for chapter starts).
+
+\raggedbottom
+% - Prevents LaTeX from stretching vertical space to align bottom margins across pages.
+% - Recommended when you have variable content like short sections or figures.
