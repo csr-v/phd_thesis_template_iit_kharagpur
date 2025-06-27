@@ -3,9 +3,17 @@
 \begin{document}
 	%\layout  % for getting the page layout dimensions
 	
-	
-	% Chapters
-	\include{./TeX_files/chapters/chapter_01}
+	\frontmatter
+	\pagestyle{plain}
+	\include{./TeX_files/headtail}
+	{
+		% Chapters
+		\mainmatter
+		\pagestyle{fancy}  % <-- turn headers back on
+		\begin{spacing}{1.5}
+			\include{./TeX_files/chapters/chapter_01}
+		\end{spacing}
 
+	}
 	
 \end{document}

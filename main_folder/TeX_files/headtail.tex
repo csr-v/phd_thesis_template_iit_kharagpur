@@ -1,0 +1,61 @@
+
+\input{./TeX_files/headtail/coverpage.tex}
+\thispagestyle{empty}
+\null
+\newpage
+\cleardoublepage
+
+
+
+\addcontentsline{toc}{chapter}{Title Page}
+\newgeometry{a4paper,inner=1.5in,outer=1.0 in,bottom=0.8cm,top = 2 cm}
+\input{./TeX_files/headtail/titlepage.tex}
+\restoregeometry
+
+\cleardoublepage
+\input{./TeX_files/headtail/dedication.tex}
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Certificate of Approval}
+\newgeometry{a4paper,inner=1.2 in,outer=1.0 in,bottom=1cm,top = 1.6 cm}
+\input{./TeX_files/headtail/certificate_approval.tex}
+\restoregeometry
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Certificate}
+\input{./TeX_files/headtail/certificate.tex}
+
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\input{./TeX_files/headtail/acknowledgement.tex}
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Declaration}
+\input{./TeX_files/headtail/declaration.tex}
+
+
+\cleardoublepage
+\renewcommand{\contentsname}{Contents}  % Original name = Contents
+\addcontentsline{toc}{chapter}{Contents}
+\cleardoublepage
+
+\begin{spacing}{1.2}  % Environment for 1.2 line spacing for contents and lists
+	\tableofcontents
+	\cleardoublepage
+	\listoffigures
+	\cleardoublepage
+	\listoftables%
+	\cleardoublepage
+\end{spacing}
+
+\addcontentsline{toc}{chapter}{List of Symbols and Abbreviations} %%%%%%%%
+\markboth{List of Symbols and Abbreviations}{List of Symbols and Abbreviations}  %%%%%%%%%%%
+\input{./TeX_files/headtail/list_of_symbols.tex}
+
+\cleardoublepage
+
+\newgeometry{a4paper,inner=1.5in,outer=1.0 in,bottom=1cm,top = 2.4 cm}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{./TeX_files/headtail/abstract.tex}
+\restoregeometry
